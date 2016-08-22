@@ -1,4 +1,4 @@
-#BKCommonLib for 1.8.8
+#Orebfuscator for 1.8.8 / 1.8.3 (ViaVersion compatible)
 
 **This version works with ViaVersion properly and ProtocolLib**
 
