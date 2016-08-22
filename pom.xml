@@ -34,8 +34,9 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
-      <version>1.8.3-R0.1-SNAPSHOT</version>
-      <scope>provided</scope>
+      <version>1.8.4-R0.1-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>U:/Downloads/spigot-1.8.4-R0.1-SNAPSHOT-latest.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.comphenix.protocol</groupId>
@@ -48,7 +49,6 @@
   <build>
     <defaultGoal>clean install</defaultGoal>
     <sourceDirectory>src/main/java</sourceDirectory>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
     <resources>
       <resource>
         <directory>src/main/resources</directory>

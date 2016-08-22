@@ -16,6 +16,7 @@
 
 package com.lishid.orebfuscator.hook;
 
+import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.Packets;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
@@ -25,7 +26,7 @@ import com.comphenix.protocol.events.PacketEvent;
 import com.lishid.orebfuscator.hithack.BlockHitManager;
 import com.lishid.orebfuscator.internal.Packet51;
 import com.lishid.orebfuscator.obfuscation.Calculations;
-import net.minecraft.server.v1_8_R2.PacketPlayInBlockDig.EnumPlayerDigType;
+import net.minecraft.server.v1_8_R3.PacketPlayInBlockDig.EnumPlayerDigType;
 import org.bukkit.plugin.Plugin;
 
 public class ProtocolLibHook {
@@ -33,9 +34,8 @@ public class ProtocolLibHook {
 
     public void register(Plugin plugin) {
         manager = ProtocolLibrary.getProtocolManager();
-        Integer[] packets = new Integer[]{Packets.Server.MAP_CHUNK};
-
-        manager.addPacketListener(new PacketAdapter(plugin, ConnectionSide.SERVER_SIDE, packets) {
+        PacketAdapter.AdapterParameteters mapChunkBulkParam = new PacketAdapter.AdapterParameteters().serverSide().optionAsync().plugin(plugin).types(PacketType.Play.Server.MAP_CHUNK_BULK);
+        manager.addPacketListener(new PacketAdapter(mapChunkBulkParam) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 if (event.getPacketID() == Packets.Server.MAP_CHUNK) {
