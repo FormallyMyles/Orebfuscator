@@ -2,9 +2,9 @@
 
 **This version works with ViaVersion properly and ProtocolLib**
 
-**Download from http://myles.us/ViaVersion/orebfuscator-3.0.6-for-1.8.3-spigot.jar for 1.8.3**
+**Download from http://myles.us/ViaVersion/orebfuscator-3.0.6i-for-1.8.3-spigot.jar for 1.8.3**
 
-**Download from http://myles.us/ViaVersion/orebfuscator-3.0.6-for-1.8.8-spigot.jar for 1.8.8**
+**Download from http://myles.us/ViaVersion/orebfuscator-3.0.6i-for-1.8.8-spigot.jar for 1.8.6-1.8.8**
 
 **If you don't want to compile**
 
