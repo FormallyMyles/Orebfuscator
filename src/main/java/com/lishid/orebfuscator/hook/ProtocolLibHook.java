@@ -23,6 +23,7 @@ import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ConnectionSide;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketEvent;
+import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.lishid.orebfuscator.hithack.BlockHitManager;
 import com.lishid.orebfuscator.internal.Packet51;
 import com.lishid.orebfuscator.obfuscation.Calculations;
@@ -46,16 +47,13 @@ public class ProtocolLibHook {
             }
         });
 
-        Integer[] packets2 = new Integer[]{Packets.Client.BLOCK_DIG};
-        manager.addPacketListener(new PacketAdapter(plugin, ConnectionSide.CLIENT_SIDE, packets2) {
+        manager.addPacketListener(new PacketAdapter(plugin, PacketType.Play.Client.BLOCK_DIG) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
-                if (event.getPacketID() == Packets.Client.BLOCK_DIG) {
-                    EnumPlayerDigType status = event.getPacket().getSpecificModifier(EnumPlayerDigType.class).read(0);
-                    if (status == EnumPlayerDigType.ABORT_DESTROY_BLOCK) {
-                        if (!BlockHitManager.hitBlock(event.getPlayer(), null)) {
-                            event.setCancelled(true);
-                        }
+                EnumWrappers.PlayerDigType status = event.getPacket().getPlayerDigTypes().read(0);
+                if (status == EnumWrappers.PlayerDigType.ABORT_DESTROY_BLOCK) {
+                    if (!BlockHitManager.hitBlock(event.getPlayer(), null)) {
+                        event.setCancelled(true);
                     }
                 }
             }
